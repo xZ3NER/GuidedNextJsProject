@@ -1,38 +1,47 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Routes in NextJS
 
-## Getting Started
-
-First, run the development server:
+The routes in NextJS looks something like:
 
 ```bash
-npm run dev
+pages/index.tsx -> '/' route
 # or
-yarn dev
+pages/new-meetup/index.tsx -> '/new-meetup' route
 # or
-pnpm dev
+pages/new-meetup/[id].tsx -> '/new-meetup/:id' route
+# or
+pages/[id]/index.tsx -> '/:id' route
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Navigate between routes
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+You can navigate using:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+```bash
+Link element from 'next/link' 
+<Link href="/">
+#or
+const route = useRouter();
+route.push("/");
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Also, you can obtain the actual route params, using:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+const route = useRouter();
+const param = route.query.id (where id it's the route id name) 
+```
 
-## Learn More
+## Pre-rendering
 
-To learn more about Next.js, take a look at the following resources:
+In Next, we have 2 forms of pre-rendering:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+1.- Static Site Generation and Incremental Static Regeneration (SSR/ISR) (with or without data)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Uses getStaticProps()
 
-## Deploy on Vercel
+2.- Server Side Rendering (SSR)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Uses getServerSideProps()
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
