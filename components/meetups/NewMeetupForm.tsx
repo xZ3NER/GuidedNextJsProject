@@ -2,11 +2,11 @@ import { useRef } from "react";
 
 import { Card } from "..";
 import classes from "./NewMeetupForm.module.css";
-import { MeetupData } from "@/util/models/meetup-data";
+import { MeetupDocument } from "@/util/models/meetup-data";
 
 interface NewMeetupFormProps {
   children?: React.ReactNode;
-  onAddMeetup: (meetup: MeetupData) => void;
+  onAddMeetup: (meetup: MeetupDocument) => void;
 }
 
 export const NewMeetupForm = ({ onAddMeetup }: NewMeetupFormProps) => {
@@ -23,14 +23,14 @@ export const NewMeetupForm = ({ onAddMeetup }: NewMeetupFormProps) => {
     const enteredAddress = addressInputRef.current!.value;
     const enteredDescription = descriptionInputRef.current!.value;
 
-    const meetupData = new MeetupData(
+    const meetupDocument = new MeetupDocument(
       enteredTitle,
       enteredImage,
       enteredAddress,
       enteredDescription
     );
 
-    onAddMeetup(meetupData);
+    onAddMeetup(meetupDocument);
   };
 
   return (

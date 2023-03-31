@@ -13,7 +13,7 @@ export const MeetupItem = ({meetupItem}: MeetupItemProps) => {
 
   const showDetailsHandler = () => {
     // Works like Link (push the route)
-    router.push("/" + meetupItem.id);
+    router.push("/" + meetupItem._id);
   };
 
   return (

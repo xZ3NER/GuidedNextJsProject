@@ -15,7 +15,7 @@ export const MeetupList = ({meetups}: MeetupListProps) => {
     <ul className={classes.list}>
       {meetups.map((meetup) => (
         <MeetupItem
-          key={meetup.id}
+          key={meetup._id}
           meetupItem={meetup}
         />
       ))}
